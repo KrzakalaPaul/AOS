@@ -1,4 +1,5 @@
 from numpy.random import randint
+import numpy as np
 
 def D(n, samples = 1):
     return randint(1, n+1, samples)  
@@ -20,3 +21,8 @@ def ClipSave(x,x_old):
     x = max(x_old - 1, x) # Save cannot be worse than the original save - 1
     x = min(x, 7) # Some save always miss (we set the test to 7+)
     return x
+
+def miniD3(samples):
+    roll = D(3, samples)
+    roll = np.where(roll == 1, 0, roll)
+    return roll
