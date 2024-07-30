@@ -1,3 +1,4 @@
+
 from rules.combat_rules import Profile, Weapon
 from rules.fight import fight
 
@@ -23,8 +24,8 @@ class Defenseur(Profile):
         self.name = 'Defenseur'
         self.cost = 250
         
-        self.models = 2
-        self.health = 2
+        self.models = 1
+        self.health = 1
         self.save = 7
         self.ward = None
         
@@ -34,9 +35,16 @@ class Defenseur(Profile):
         self.champion = False
         
         
+
 unit1 = Attaquant()
 unit2 = Defenseur()
-
 log_dic = fight(unit1,unit2, initiative = 1)
-
 print(log_dic)
+
+
+'''
+scored, dmg, rend, mortal_dmg = Attaquant().attack(5)
+dmg = Defenseur().defend(scored, dmg, rend, mortal_dmg)
+
+print(dmg)
+'''

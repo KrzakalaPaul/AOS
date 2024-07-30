@@ -189,12 +189,19 @@ class Karkadrak_Charge(Profile):
         
         self.champion = False
     
-    def attack(self, save, samples):
-        dmg = super(Karkadrak_Charge,self).attack(save, samples)
+    def attack_save(self, save, samples):
+        dmg = super(Karkadrak_Charge,self).attack_save(save, samples)
         # add dmg from charge 
         dmg += miniD3(samples)
         
         return dmg
+    
+    def attack(self, save, samples):
+        scored_all, dmg_all, rend_all, mortal_dmg_all = super(Karkadrak_Charge,self).attack(samples)
+        # add dmg from charge 
+        mortal_dmg_all += miniD3(samples)
+        
+        return scored_all, dmg_all, rend_all, mortal_dmg_all
         
         
 class Chosen(Profile):
@@ -267,13 +274,19 @@ class ChaosChariot(Profile):
         
         self.champion = False
     
-    def attack(self, save, samples):
-        
-        dmg = super(ChaosChariot,self).attack(save, samples)
+    def attack_save(self, save, samples):
+        dmg = super(ChaosChariot,self).attack_save(save, samples)
         # add dmg from charge 
         dmg += miniD3(samples)
         
         return dmg
+    
+    def attack(self, save, samples):
+        scored_all, dmg_all, rend_all, mortal_dmg_all = super(ChaosChariot,self).attack(samples)
+        # add dmg from charge 
+        mortal_dmg_all += miniD3(samples)
+        
+        return scored_all, dmg_all, rend_all, mortal_dmg_all
         
 class ChaosLordMounted_Vanilla(Profile):
     
@@ -332,21 +345,10 @@ class Belakor(Profile):
         self.champion = False
         
     def get_tankiness_modifier(self,rend):
-        # Invulnerable save
-        
-        health = self.health*self.models
-        save = self.save
-        if self.ward is None:
-            ward = 7
-        else:
-            ward = self.ward
-        
-        effective_save = save 
-        
-        modifier = health / min( (effective_save -1) / 6, 1 )
-        modifier = modifier/ min( (ward -1) / 6, 1 ) 
-
-        return modifier
+        return self.get_tankiness_modifier_immortal_save()
+    
+    def defend(self,scored, dmg, rend, mortal_dmg):
+        return self.defend_immortal_save(scored, dmg, mortal_dmg)
         
 class Slautherbrute(Profile):
     
@@ -367,13 +369,19 @@ class Slautherbrute(Profile):
         
         self.champion = False
     
-    def attack(self, save, samples):
-        
-        dmg = super(Slautherbrute,self).attack(save, samples)
+    def attack_save(self, save, samples):
+        dmg = super(Slautherbrute,self).attack_save(save, samples)
         # add dmg from charge 
         dmg += 2*miniD3(samples)
         
         return dmg
+    
+    def attack(self, save, samples):
+        scored_all, dmg_all, rend_all, mortal_dmg_all = super(Slautherbrute,self).attack(samples)
+        # add dmg from charge 
+        mortal_dmg_all += 2*miniD3(samples)
+        
+        return scored_all, dmg_all, rend_all, mortal_dmg_all
         
 
 class Warden(Profile):
@@ -397,7 +405,7 @@ class Stoneguard(Profile):
     
     def __init__(self):
         
-        self.name = 'Stoneguard'
+        self.name = 'Stoneguard buffed'
         self.cost = 130
         
         self.models = 5
@@ -405,28 +413,7 @@ class Stoneguard(Profile):
         self.save = 4
         self.ward = 5
         
-        weapon1 = Weapon(Atk = 2, Hit = 3, Wound = 3, Rend = 2, Dmg = 2, Crit = None, Companion = False)
-        self.weapons = [weapon1]
-        
-        self.champion = True
-        
-    def get_tankiness_modifier(self,rend):
-        rend = max(rend - 1,0)
-        return super(Stoneguard,self).get_tankiness_modifier(rend)
-        
-class Stoneguard_11(Profile):
-    
-    def __init__(self):
-        
-        self.name = 'Stoneguard +1 +1 '
-        self.cost = 130
-        
-        self.models = 5
-        self.health = 2
-        self.save = 4
-        self.ward = 5
-        
-        weapon1 = Weapon(Atk = 2, Hit = 2, Wound = 2, Rend = 2, Dmg = 2, Crit = None, Companion = False)
+        weapon1 = Weapon(Atk = 3, Hit = 3, Wound = 3, Rend = 2, Dmg = 2, Crit = None, Companion = False)
         self.weapons = [weapon1]
         
         self.champion = True
@@ -435,26 +422,10 @@ class Stoneguard_11(Profile):
         rend = max(rend - 1,0)
         return super(Stoneguard,self).get_tankiness_modifier(rend)
     
-class Stoneguard_rend1(Profile):
-    
-    def __init__(self):
+    def defend(self,scored, dmg, rend, mortal_dmg):
+        rend = np.maximum(rend - 1,0)
+        return self.defend(scored, dmg, rend, mortal_dmg)
         
-        self.name = 'Stoneguard +1 rend'
-        self.cost = 130
-        
-        self.models = 5
-        self.health = 2
-        self.save = 4
-        self.ward = 5
-        
-        weapon1 = Weapon(Atk = 2, Hit = 3, Wound = 3, Rend = 3, Dmg = 2, Crit = None, Companion = False)
-        self.weapons = [weapon1]
-        
-        self.champion = True
-        
-    def get_tankiness_modifier(self,rend):
-        rend = max(rend - 1,0)
-        return super(Stoneguard,self).get_tankiness_modifier(rend)
         
 class Eltharion(Profile):
     
@@ -475,21 +446,10 @@ class Eltharion(Profile):
         self.champion = False
         
     def get_tankiness_modifier(self,rend):
-        # Invulnerable save
-        
-        health = self.health*self.models
-        save = self.save
-        if self.ward is None:
-            ward = 7
-        else:
-            ward = self.ward
-        
-        effective_save = save 
-        
-        modifier = health / min( (effective_save -1) / 6, 1 )
-        modifier = modifier/ min( (ward -1) / 6, 1 ) 
-
-        return modifier
+        return self.get_tankiness_modifier_immortal_save()
+    
+    def defend(self,scored, dmg, rend, mortal_dmg):
+        return self.defend_immortal_save(scored, dmg, mortal_dmg)
     
     
 class Windcharger(Profile):
@@ -508,10 +468,7 @@ class Windcharger(Profile):
         self.weapons = [weapon1]
         
         self.champion = True
-        
-    def get_tankiness_modifier(self,rend):
-        return None
-    
+
 class Sephireth(Profile):
     
     def __init__(self):
@@ -529,9 +486,6 @@ class Sephireth(Profile):
         
         self.champion = True
         
-    def get_tankiness_modifier(self,rend):
-        return None
-    
     
 class Avalenor(Profile):
     
@@ -553,4 +507,8 @@ class Avalenor(Profile):
     
     def get_tankiness_modifier(self,rend):
         rend = max(rend - 2,0)
-        return super(Avalenor,self).get_tankiness_modifier(rend)
+        return super(Stoneguard,self).get_tankiness_modifier(rend)
+    
+    def defend(self,scored, dmg, rend, mortal_dmg):
+        rend = np.maximum(rend - 2,0)
+        return self.defend(scored, dmg, rend, mortal_dmg)

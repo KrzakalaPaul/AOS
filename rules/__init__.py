@@ -1,1 +1,1 @@
-from .combat_rules import Profile, attack
+from .combat_rules import Profile, basic_attack

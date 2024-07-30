@@ -1,5 +1,6 @@
 from rules.unit_profiles import *
 from metrics.unit_metric import multimetric_plot,ranking,DPS
+from metrics.pairwise_metric import matrix, winrate
 import numpy as np
 np.set_printoptions(precision=2, suppress=True)
 
@@ -7,13 +8,19 @@ np.set_printoptions(precision=2, suppress=True)
 
 units = [Chosen(), ChaosWarriors(),Ogroids(),ChaosChariot()]
 
+################ Ranking according to a metric ################
+
+metric = winrate(samples=10)
+
+matrix(units, metric)
+
+
 ################ Plot different metrics ################
 
 metrics = [DPS(save = s, samples=10000, scale_by_cost=True) for s in [2,3,4,5]]
 
 multimetric_plot(units, metrics)
 
-assert False
 ################ Ranking according to a metric ################
 
 metric = DPS(save = 3, samples=10000)

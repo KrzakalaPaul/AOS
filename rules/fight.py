@@ -45,8 +45,9 @@ def fight(unit1,unit2, initiative = 'random'):
         
         turns += 1
         
-        dmg = attacker.attack(defender.save, 1).item()
-        # TO DO: ADD WARD ROLL and others shenanigans
+        scored, dmg, rend, mortal_dmg = attacker.attack(1)
+        dmg = defender.defend(scored, dmg, rend, mortal_dmg).item()
+        print(dmg)
         update(defender, dmg)
         
         attacker, defender = defender, attacker

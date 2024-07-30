@@ -17,9 +17,9 @@ def ClipTest(x):
     return max(2, min(x, 7))
 
 def ClipSave(x,x_old):
-    x = max(2, x) # 1 is always a fail
-    x = max(x_old - 1, x) # Save cannot be worse than the original save - 1
-    x = min(x, 7) # Some save always miss (we set the test to 7+)
+    x = np.maximum(2, x) # 1 is always a fail
+    x = np.maximum(x_old - 1, x) # Save cannot be worse than the original save - 1
+    x = np.minimum(x, 7) # Some save always miss (we set the test to 7+)
     return x
 
 def miniD3(samples):
