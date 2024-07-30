@@ -45,6 +45,6 @@ class DPS(unit_metric):
         
     def get_metric(self, unit):
         
-        return unit.attack_save(self.save, self.samples).mean()/unit.cost if self.scale_by_cost else unit.attack(self.save, self.samples).mean()
+        return unit.attack_save(self.save, self.samples).mean()/unit.cost if self.scale_by_cost else unit.attack_save(self.save, self.samples).mean()
     
     

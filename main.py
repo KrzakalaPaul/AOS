@@ -6,9 +6,9 @@ np.set_printoptions(precision=2, suppress=True)
 
 ################ Define Units to study ################
 
-units = [Chosen(), ChaosWarriors(),Ogroids(),ChaosChariot()]
+units = [Eltharion(), Avalenor(), Belakor(), Abraxia_All()]
 
-################ Ranking according to a metric ################
+################ Tournament ################
 
 metric = winrate(samples=100, initiative = 1)
 
@@ -25,7 +25,6 @@ multimetric_plot(units, metrics)
 metric = DPS(save = 3, samples=10000)
 
 print(ranking(units, metric))
-
 
 
 '''

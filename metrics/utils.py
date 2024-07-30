@@ -21,7 +21,7 @@ def plot_multi_bars(dic_of_dic, alpha = 0.5):
         for j,unit in enumerate(dic):
         
             position = i + 0.8*j/n_units + 0.2
-            width = 0.8/n_units - 0.4
+            width = 0.8/n_units 
             value = dic[unit]
             color = 'C'+str(j)
             

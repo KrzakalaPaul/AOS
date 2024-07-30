@@ -145,8 +145,8 @@ class Profile:
             scored_all.append(scored)
             dmg_all.append(dmg)
             rend_all.append(rend)
-            mortal_dmg_all += mortal_dmg
-        
+            mortal_dmg_all += mortal_dmg.astype(int)
+
         scored_all = np.concatenate(scored_all, axis = 1)
         dmg_all = np.concatenate(dmg_all, axis = 1)   
         rend_all = np.concatenate(rend_all, axis = 1)

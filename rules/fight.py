@@ -21,7 +21,7 @@ def update(defender, dmg):
         
 
 def fight(unit1,unit2, initiative = 'random'):
-    
+
     unit1 = deepcopy(unit1)
     unit2 = deepcopy(unit2)
     
@@ -47,11 +47,12 @@ def fight(unit1,unit2, initiative = 'random'):
         
         scored, dmg, rend, mortal_dmg = attacker.attack(1)
         dmg = defender.defend(scored, dmg, rend, mortal_dmg).item()
-
+ 
         update(defender, dmg)
         
         attacker, defender = defender, attacker
         
+
     winner = 1 if unit1.models > 0 else 2
     
     log_dic = {'winner': winner, 'turns': turns}

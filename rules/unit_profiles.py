@@ -424,7 +424,7 @@ class Stoneguard(Profile):
     
     def defend(self,scored, dmg, rend, mortal_dmg):
         rend = np.maximum(rend - 1,0)
-        return self.defend(scored, dmg, rend, mortal_dmg)
+        return super(Stoneguard,self).defend(scored, dmg, rend, mortal_dmg)
         
         
 class Eltharion(Profile):
@@ -507,8 +507,8 @@ class Avalenor(Profile):
     
     def get_tankiness_modifier(self,rend):
         rend = max(rend - 2,0)
-        return super(Stoneguard,self).get_tankiness_modifier(rend)
+        return super(Avalenor,self).get_tankiness_modifier(rend)
     
     def defend(self,scored, dmg, rend, mortal_dmg):
         rend = np.maximum(rend - 2,0)
-        return self.defend(scored, dmg, rend, mortal_dmg)
+        return super(Avalenor,self).defend(scored, dmg, rend, mortal_dmg)

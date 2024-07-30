@@ -29,8 +29,9 @@ def matrix(units, metric):
     dataframe = pd.DataFrame({'unit1': unit1_list, 'unit2': unit2_list, metric.metric_name: winrate_list})
     dataframe = pd.pivot_table(dataframe, values = metric.metric_name, index = 'unit1', columns = 'unit2')
     
+    print(dataframe)    
     fig,ax = plt.subplots()
-    sns.heatmap(dataframe, ax = ax)
+    sns.heatmap(dataframe, ax = ax, vmin = 0, vmax = 1)
     plt.show()
     
     
