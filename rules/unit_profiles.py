@@ -1,67 +1,5 @@
-from eval_dps import DPS
-from utils import ClipSave,miniD3
-
-
-class Weapon():
-    def __init__(self, Atk, Hit, Wound, Rend, Dmg, Crit, Companion):
-        self.Atk = Atk
-        self.Hit = Hit
-        self.Wound = Wound
-        self.Rend = Rend
-        self.Dmg = Dmg
-        assert Crit in [None, 'Auto-wound', 'Mortal', '2 Hits'], "Invalid value for Crit"
-        self.Crit = Crit    
-        self.Companion = Companion
-
-class Profile:
-    def __init__(self):
-        
-        self.name = 'Unit Name'
-        self.cost = 250
-        
-        self.models = 5
-        self.health = 4
-        self.save = 3
-        self.ward = None
-        
-        weapon1 = Weapon(Atk = 3, Hit = 3, Wound = 3, Rend = -1, Dmg = 1, Crit = None, Companion = False)
-        self.weapons = [weapon1]
-        
-        self.champion = True
-        
-    def DPS(self, save, samples):
-        
-        dmg = 0
-        for weapon in self.weapons:
-            unit_weapon = {'Atk': weapon.Atk*self.models + (1-weapon.Companion)*self.champion, 
-                           'Hit': weapon.Hit, 
-                           'Wound': weapon.Wound, 
-                           'Rnd': weapon.Rend, 
-                           'Dmg': weapon.Dmg,
-                           'Crit': weapon.Crit
-                           }
-            dmg += DPS(unit_weapon, save, samples)
-            
-        return dmg
-
-    def get_tankiness_modifier(self,rend):
-        
-        health = self.health*self.models
-        save = self.save
-        if self.ward is None:
-            ward = 7
-        else:
-            ward = self.ward
-        
-        effective_save = save + rend
-        effective_save = ClipSave(x = effective_save, x_old = save)
-        
-        modifier = health / min( (effective_save -1) / 6, 1 )
-        modifier = modifier/ min( (ward -1) / 6, 1 ) 
-
-        return modifier
-        
-        
+from .combat_rules import *
+from .utils import miniD3
 
 class ChaosKnights_Charge(Profile):
     def __init__(self):
@@ -251,12 +189,12 @@ class Karkadrak_Charge(Profile):
         
         self.champion = False
     
-    def DPS(self, save, samples):
-        dps = super(Karkadrak_Charge,self).DPS(save, samples)
+    def attack(self, save, samples):
+        dmg = super(Karkadrak_Charge,self).attack(save, samples)
         # add dmg from charge 
-        dps += miniD3(samples)
+        dmg += miniD3(samples)
         
-        return dps
+        return dmg
         
         
 class Chosen(Profile):
@@ -329,13 +267,13 @@ class ChaosChariot(Profile):
         
         self.champion = False
     
-    def DPS(self, save, samples):
+    def attack(self, save, samples):
         
-        dps = super(ChaosChariot,self).DPS(save, samples)
+        dmg = super(ChaosChariot,self).attack(save, samples)
         # add dmg from charge 
-        dps += miniD3(samples)
+        dmg += miniD3(samples)
         
-        return dps
+        return dmg
         
 class ChaosLordMounted_Vanilla(Profile):
     
@@ -379,7 +317,7 @@ class Belakor(Profile):
     def __init__(self):
         
         self.name = "Be'Lakor"
-        self.cost = 410
+        self.cost = 410 - 200
         
         self.models = 1
         self.health = 14
@@ -410,23 +348,33 @@ class Belakor(Profile):
 
         return modifier
         
-class Warden(Profile):
+class Slautherbrute(Profile):
     
     def __init__(self):
         
-        self.name = 'Warden'
-        self.cost = 150
-        
-        self.models = 10
-        self.health = 1
+        self.name = 'Slaughterbrute (charging infantery with all out attack)'
+        self.cost = 240
+
+        self.models = 1
+        self.health = 14
         self.save = 4
         self.ward = None
         
-        weapon1 = Weapon(Atk = 2, Hit = 3, Wound = 4, Rend = 1, Dmg = 1, Crit = 'Mortal', Companion = False)
-        self.weapons = [weapon1]
+        weapon1 = Weapon(Atk=8, Hit=3, Wound=2, Rend=2, Dmg=2, Companion = True, Crit = None)
+        weapon2 = Weapon(Atk=2, Hit=3, Wound=2, Rend=1, Dmg=3, Companion = True, Crit = None)
         
-        self.champion = True
-
+        self.weapons = [weapon1,weapon2]
+        
+        self.champion = False
+    
+    def attack(self, save, samples):
+        
+        dmg = super(Slautherbrute,self).attack(save, samples)
+        # add dmg from charge 
+        dmg += 2*miniD3(samples)
+        
+        return dmg
+        
 
 class Warden(Profile):
     

@@ -1,0 +1,1 @@
+from .combat_rules import Profile, attack
