@@ -7,16 +7,18 @@ np.set_printoptions(precision=2, suppress=True)
 
 units = [Chosen(), ChaosWarriors(),Ogroids(),ChaosChariot()]
 
+################ Plot different metrics ################
+
+metrics = [DPS(save = s, samples=10000, scale_by_cost=True) for s in [2,3,4,5]]
+
+multimetric_plot(units, metrics)
+
+assert False
 ################ Ranking according to a metric ################
 
 metric = DPS(save = 3, samples=10000)
 
 print(ranking(units, metric))
-
-################ Plot different metrics ################
-
-metrics = [DPS(save = s, samples=10000) for s in [2,3,4,5]]
-
 
 
 

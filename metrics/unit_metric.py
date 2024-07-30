@@ -36,14 +36,15 @@ def multimetric_plot(units, metrics):
 
 class DPS(unit_metric):
     
-    def __init__(self, save, samples = 1000):
+    def __init__(self, save, scale_by_cost = False, samples = 1000):
         
         self.save = save
         self.samples = samples
+        self.scale_by_cost = scale_by_cost
         self.metric_name = 'DPS vs ' + str(save) + '+'
         
     def get_metric(self, unit):
         
-        return unit.attack(self.save, self.samples).mean()
+        return unit.attack(self.save, self.samples).mean()/unit.cost if self.scale_by_cost else unit.attack(self.save, self.samples).mean()
     
     

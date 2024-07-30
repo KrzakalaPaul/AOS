@@ -61,6 +61,7 @@ class Weapon():
         self.Companion = Companion
         
     def get_unit_weapon(self, models, champion):
+
         unit_weapon = {'Atk': self.Atk*models + (1-self.Companion)*champion, 
                        'Hit': self.Hit, 
                        'Wound': self.Wound, 
@@ -114,3 +115,6 @@ class Profile:
         modifier = modifier/ min( (ward -1) / 6, 1 ) 
 
         return modifier
+    
+    
+
