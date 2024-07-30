@@ -16,12 +16,19 @@ class pairwise_metric():
     
 def matrix(units, metric):
     
-    dataframe = pd.DataFrame(index = [unit.name for unit in units], columns = [unit.name for unit in units])
+    unit1_list = []
+    unit2_list = []
+    winrate_list = []
     
     for unit1 in units:
         for unit2 in units:
-            dataframe.loc[unit1.name, unit2.name] = metric.get_metric(unit1, unit2)
+            unit1_list.append(unit1.name)
+            unit2_list.append(unit2.name)
+            winrate_list.append(metric.get_metric(unit1, unit2))
             
+    dataframe = pd.DataFrame({'unit1': unit1_list, 'unit2': unit2_list, metric.metric_name: winrate_list})
+    dataframe = pd.pivot_table(dataframe, values = metric.metric_name, index = 'unit1', columns = 'unit2')
+    
     fig,ax = plt.subplots()
     sns.heatmap(dataframe, ax = ax)
     plt.show()
@@ -41,12 +48,13 @@ class winrate(pairwise_metric):
         win2 = 0
         
         for _ in range(self.samples):
-            winner = fight(unit1, unit2, initiative = self.initiative)
-            if winner == unit1:
+            log_dic = fight(unit1, unit2, initiative = self.initiative)
+            winner = log_dic['winner']
+            if winner == 1:
                 win1 += 1
             else:
                 win2 += 1
-                
+
         return win1/self.samples
         
         

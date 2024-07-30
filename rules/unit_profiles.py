@@ -196,7 +196,7 @@ class Karkadrak_Charge(Profile):
         
         return dmg
     
-    def attack(self, save, samples):
+    def attack(self, samples):
         scored_all, dmg_all, rend_all, mortal_dmg_all = super(Karkadrak_Charge,self).attack(samples)
         # add dmg from charge 
         mortal_dmg_all += miniD3(samples)
@@ -281,7 +281,7 @@ class ChaosChariot(Profile):
         
         return dmg
     
-    def attack(self, save, samples):
+    def attack(self, samples):
         scored_all, dmg_all, rend_all, mortal_dmg_all = super(ChaosChariot,self).attack(samples)
         # add dmg from charge 
         mortal_dmg_all += miniD3(samples)
@@ -376,7 +376,7 @@ class Slautherbrute(Profile):
         
         return dmg
     
-    def attack(self, save, samples):
+    def attack(self, samples):
         scored_all, dmg_all, rend_all, mortal_dmg_all = super(Slautherbrute,self).attack(samples)
         # add dmg from charge 
         mortal_dmg_all += 2*miniD3(samples)

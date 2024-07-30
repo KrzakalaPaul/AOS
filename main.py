@@ -10,10 +10,9 @@ units = [Chosen(), ChaosWarriors(),Ogroids(),ChaosChariot()]
 
 ################ Ranking according to a metric ################
 
-metric = winrate(samples=10)
+metric = winrate(samples=100, initiative = 1)
 
 matrix(units, metric)
-
 
 ################ Plot different metrics ################
 
@@ -26,7 +25,6 @@ multimetric_plot(units, metrics)
 metric = DPS(save = 3, samples=10000)
 
 print(ranking(units, metric))
-
 
 
 

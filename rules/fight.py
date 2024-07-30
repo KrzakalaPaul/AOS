@@ -47,7 +47,7 @@ def fight(unit1,unit2, initiative = 'random'):
         
         scored, dmg, rend, mortal_dmg = attacker.attack(1)
         dmg = defender.defend(scored, dmg, rend, mortal_dmg).item()
-        print(dmg)
+
         update(defender, dmg)
         
         attacker, defender = defender, attacker
