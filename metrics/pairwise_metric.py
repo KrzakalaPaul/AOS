@@ -2,6 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 from rules.fight import fight
+from multiprocessing import Pool
 
 class pairwise_metric():
     
@@ -24,8 +25,10 @@ def matrix(units, metric):
         for unit2 in units:
             unit1_list.append(unit1.name)
             unit2_list.append(unit2.name)
-            winrate_list.append(metric.get_metric(unit1, unit2))
-            
+    
+    with Pool() as p:
+        winrate_list = p.starmap(metric.get_metric, [(u1, u2) for u1 in units for u2 in units])
+
     dataframe = pd.DataFrame({'unit1': unit1_list, 'unit2': unit2_list, metric.metric_name: winrate_list})
     dataframe = pd.pivot_table(dataframe, values = metric.metric_name, index = 'unit1', columns = 'unit2')
     
