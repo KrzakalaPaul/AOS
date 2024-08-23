@@ -19,7 +19,6 @@ def matrix(units, metric):
     
     unit1_list = []
     unit2_list = []
-    winrate_list = []
     
     for unit1 in units:
         for unit2 in units:
@@ -48,18 +47,5 @@ class winrate(pairwise_metric):
         
     def get_metric(self, unit1, unit2):
         
-        win1 = 0
-        win2 = 0
-        
-        for _ in range(self.samples):
-            log_dic = fight(unit1, unit2, initiative = self.initiative)
-            winner = log_dic['winner']
-            if winner == 1:
-                win1 += 1
-            else:
-                win2 += 1
-
-        return win1/self.samples
-        
-        
+        return sum([fight(unit1, unit2, self.initiative)['winner'] == 1 for _ in range(self.samples)]) / self.samples
     
