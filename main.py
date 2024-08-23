@@ -4,28 +4,33 @@ from metrics.pairwise_metric import matrix, winrate
 import numpy as np
 np.set_printoptions(precision=2, suppress=True)
 
-################ Define Units to study ################
 
-units = [Eltharion(), Avalenor(), Belakor(), Abraxia_All()]
+def main():
+    ################ Define Units to study ################
 
-################ Tournament ################
+    units = [Eltharion(), Avalenor(), Belakor(), Abraxia_All()]
 
-metric = winrate(samples=100, initiative = 1)
+    ################ Tournament ################
 
-matrix(units, metric)
+    metric = winrate(samples=10000, initiative = 1)
 
-################ Plot different metrics ################
+    matrix(units, metric)
 
-metrics = [DPS(save = s, samples=10000, scale_by_cost=True) for s in [2,3,4,5]]
+    ################ Plot different metrics ################
 
-multimetric_plot(units, metrics)
+    metrics = [DPS(save = s, samples=10000, scale_by_cost=True) for s in [2,3,4,5]]
 
-################ Ranking according to a metric ################
+    multimetric_plot(units, metrics)
 
-metric = DPS(save = 3, samples=10000)
+    ################ Ranking according to a metric ################
 
-print(ranking(units, metric))
+    metric = DPS(save = 3, samples=10000)
 
+    print(ranking(units, metric))
+
+
+if __name__ == "__main__":
+    main()
 
 '''
 import numpy as np
