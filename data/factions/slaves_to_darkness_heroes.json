@@ -1,0 +1,166 @@
+{
+    "units": [
+        {
+            "has_champion": false,
+            "health": 8,
+            "id": "Chaos_Lord_on_Daemonic_Mount",
+            "model_count": 1,
+            "name": "Chaos Lord on Daemonic Mount",
+            "point_cost": 140,
+            "save": 3,
+            "unit_type": "cavalry",
+            "weapons": [
+                {
+                    "attacks": 3,
+                    "damage": 1,
+                    "name": "Daemonic Mount’s Mighty Hooves",
+                    "rend": 0,
+                    "special_rules": [
+                        {
+                            "id": "companion"
+                        }
+                    ],
+                    "to_hit": 5,
+                    "to_wound": 3
+                },
+                {
+                    "attacks": 7,
+                    "damage": 3,
+                    "name": "Cursed Weapons",
+                    "rend": 2,
+                    "to_hit": 3,
+                    "to_wound": 3
+                }
+            ]
+        },
+        {
+            "has_champion": false,
+            "health": 10,
+            "id": "Chaos_Lord_on_Karkadrak",
+            "model_count": 1,
+            "name": "Chaos Lord on Karkadrak",
+            "point_cost": 210,
+            "save": 3,
+            "unit_type": "cavalry",
+            "weapons": [
+                {
+                    "attacks": 4,
+                    "damage": 2,
+                    "name": "Karkadrak’s Claws and Horn",
+                    "rend": 1,
+                    "special_rules": [
+                        {
+                            "id": "companion"
+                        }
+                    ],
+                    "to_hit": 4,
+                    "to_wound": 3
+                },
+                {
+                    "attacks": 7,
+                    "damage": 3,
+                    "name": "Hexed Weapons",
+                    "rend": 1,
+                    "to_hit": 3,
+                    "to_wound": 3,
+                    "special_rules": [
+                        {
+                            "id": "crit_mortal"
+                        }
+                    ]
+                }
+            ],
+            "abilities": [
+                {
+                    "name": "BRUTISH RAMPAGE",
+                    "id": "impact_mortals",
+                    "damage": 2,
+                    "roll": "3+"
+                }
+            ]
+        },
+        {
+            "has_champion": false,
+            "health": 10,
+            "ward": 5,
+            "id": "Daemon_Prince",
+            "model_count": 1,
+            "name": "Daemon Prince",
+            "point_cost": 260,
+            "save": 3,
+            "weapons": [
+                {
+                    "attacks": 8,
+                    "damage": 3,
+                    "name": "Hellforged Weapons",
+                    "rend": 1,
+                    "to_hit": 3,
+                    "to_wound": 3,
+                    "special_rules": [
+                        {
+                            "id": "crit_mortal"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "has_champion": false,
+            "health": 6,
+            "id": "Exalted_Hero",
+            "model_count": 1,
+            "name": "Exalted Hero",
+            "point_cost": 80,
+            "save": 3,
+            "weapons": [
+                {
+                    "attacks": 7,
+                    "damage": 3,
+                    "name": "Blades of the Dark Champion",
+                    "rend": 2,
+                    "to_hit": 3,
+                    "to_wound": 3
+                }
+            ]
+        },
+        {
+            "has_champion": false,
+            "health": 6,
+            "id": "Chaos_Lord",
+            "model_count": 1,
+            "name": "Chaos Lord",
+            "point_cost": 100,
+            "save": 3,
+            "weapons": [
+                {
+                    "attacks": 7,
+                    "damage": 2,
+                    "name": "Blades of the Dark Champion",
+                    "rend": 1,
+                    "to_hit": 3,
+                    "to_wound": 3,
+                    "special_rules": [ { "id": "crit_mortal"} ]
+                }
+            ]
+        },
+        {
+            "has_champion": false,
+            "health": 8,
+            "id": "Ogroid_Myrmidon",
+            "model_count": 1,
+            "name": "Ogroid Myrmidon",
+            "point_cost": 120,
+            "save": 4,
+            "weapons": [
+                {
+                    "attacks": 8,
+                    "damage": 3,
+                    "name": "Gladiator’s Spear",
+                    "rend": 1,
+                    "to_hit": 3,
+                    "to_wound": 2
+                }
+            ]
+        }
+    ]
+}

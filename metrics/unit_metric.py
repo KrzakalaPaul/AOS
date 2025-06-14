@@ -32,8 +32,9 @@ def average_metric(unit: Profile, metric: UnitMetric, n_samples: int = 1000):
     """
     unit.reset()
     metric_value = 0
-    for _ in range(n_samples):
-        metric_value += metric.get_sample(unit)
+    samples = metric.get_samples(unit, n_samples)
+    for s in samples:
+        metric_value += s
     return metric_value / n_samples
 
 
@@ -121,6 +122,25 @@ def multimetric_plot(units: list[Profile], metrics: list[UnitMetric], n_samples:
             )
     plot_multi_bars(metric_to_unit_name_to_value)
 
+def scatter_plot_two_metrics(units: list[Profile], metric_A: UnitMetric, metric_B: UnitMetric, n_samples: int = 1000):
+
+    fig, ax = plt.subplots()
+    max_A = 0
+    max_B = 0
+    for unit in units:
+        value_A = average_metric(unit, metric_A, n_samples)
+        value_B = average_metric(unit, metric_B, n_samples)
+        max_A = max(max_A, value_A)
+        max_B = max(max_B, value_B)
+        ax.scatter(value_A, value_B, label=unit.name, alpha=0.5, color=plt.gca()._get_lines.get_next_color(), marker='o', s=100)
+    ax.set_xlabel(metric_A.metric_name)
+    ax.set_ylabel(metric_B.metric_name)
+    plt.ylim(0, 1.2 * max_B)
+    plt.xlim(0, 1.2 * max_A)
+    ax.legend()
+    plt.show()
+
+
 
 class DamageOneActivation(UnitMetric):
     """
@@ -139,7 +159,6 @@ class DamageOneActivation(UnitMetric):
         # Default mutable argument, see https://docs.python-guide.org/writing/gotchas/#mutable-default-arguments
         dmg = unit.attack_with_all_weapons(combat_context=combat_context, enemy_save=self.save)
         return dmg / unit.cost if self.scale_by_cost else dmg
-
 
 class AlphaStrike(UnitMetric):
     """
@@ -194,3 +213,41 @@ class BetaStrike(UnitMetric):
         else:
             metric = dmg / unit.cost if self.scale_by_cost else dmg
         return metric
+
+class EffectiveHP(UnitMetric):
+    def __init__(self, ennemy_rend: int, scale_by_cost: bool = False):
+        self.ennemy_rend = ennemy_rend
+        self.scale_by_cost = scale_by_cost
+        if scale_by_cost:
+            self.metric_name = (
+                f"Effective HP vs rend {ennemy_rend} (scaled by cost)"
+            )
+        else:
+            self.metric_name = (
+                f"Effective HP vs rend {ennemy_rend}"
+            )
+
+    def get_sample(self, unit, combat_context={}):
+        
+        ward = unit.ward if unit.ward else 7
+        ward_proba = (7 - ward)/6
+        #print(f"Unit {unit.name} ward: {ward}, ward_proba: {ward_proba}")
+        save = unit.save + self.ennemy_rend
+        if save < 1:
+            save = 2
+        if save > 6:
+            save = 7
+        save_proba = (7 - save)/6
+        #print(f"Unit {unit.name} save: {unit.save}, ennemy_rend: {self.ennemy_rend}, save_proba: {save_proba}")
+        hp = unit.health * unit.total_models
+        effective_hp = hp / ( (1-ward_proba) *(1-save_proba) )
+        if self.scale_by_cost:
+            effective_hp /= unit.cost
+        return effective_hp
+    
+    def get_samples(self, unit: Profile, samples: int = None):
+        """
+        Overrides the get_samples method because the EffectiveHP metric is deterministic and does not require sampling.
+        """
+        value = self.get_sample(unit)
+        return [value]*samples

@@ -9,12 +9,17 @@ def load_faction(faction_name: str) -> dict:
         return json.load(f)
 
 
-def get_all_units() -> dict:
-    """Load all available units from all faction files"""
+def get_all_units(faction_name=None) -> dict:
+    """Load all available units from all faction files or a specific faction if faction_name is provided"""
     units_by_id = {}
     faction_dir = Path(__file__).parent / "../data/factions"
 
-    for file_path in faction_dir.glob("*.json"):
+    if faction_name:
+        file_paths = [faction_dir / f"{faction_name}.json"]
+    else:
+        file_paths = faction_dir.glob("*.json")
+
+    for file_path in file_paths:
         with open(file_path, "r") as f:
             faction_data = json.load(f)
             for unit_data in faction_data.get("units", []):
@@ -22,7 +27,7 @@ def get_all_units() -> dict:
 
     return units_by_id
 
-def get_all_profiles(is_reinforced=False) -> dict:
-    all_units_data = get_all_units()
+def get_all_profiles(faction_name=None, is_reinforced=False) -> dict:
+    all_units_data = get_all_units(faction_name=faction_name)
     all_units = {unit_data["id"]: Profile(unit_data,is_reinforced=is_reinforced) for unit_data in all_units_data.values()}
     return all_units
