@@ -1,62 +1,18 @@
 {
     "units": [
         {
-            "has_champion": true,
-            "health": 4,
-            "id": "chaos_knights",
-            "model_count": 5,
-            "name": "Chaos Knights",
-            "point_cost": 250,
-            "save": 3,
-            "unit_type": "cavalry",
-            "weapons": [
-                {
-                    "attacks": 3,
-                    "damage": 1,
-                    "name": "Cursed Lance",
-                    "rend": 1,
-                    "special_rules": [
-                        {
-                            "condition": "charged",
-                            "id": "add_damage",
-                            "value": 1
-                        },
-                        {
-                            "condition": "charged",
-                            "id": "add_rend",
-                            "value": 1
-                        }
-                    ],
-                    "to_hit": 3,
-                    "to_wound": 3
-                },
-                {
-                    "attacks": 2,
-                    "damage": 1,
-                    "name": "Warsteed's Hooves",
-                    "special_rules": [
-                        {
-                            "id": "companion"
-                        }
-                    ],
-                    "to_hit": 5,
-                    "to_wound": 3
-                }
-            ]
-        },
-        {
             "has_champion": false,
             "health": 5,
             "id": "varanguard",
             "model_count": 3,
-            "name": "Varanguard",
+            "name": "Varanguard Charge",
             "point_cost": 340,
             "save": 3,
             "unit_type": "cavalry",
             "weapons": [
                 {
-                    "attacks": 3,
-                    "damage": 2,
+                    "attacks": 4,
+                    "damage": 3,
                     "name": "Daemonforged Blade",
                     "rend": 2,
                     "special_rules": [
@@ -93,7 +49,7 @@
             "id": "Chaos_Lord_on_Daemonic_Mount",
             "model_count": 1,
             "name": "Chaos Lord on Daemonic Mount",
-            "point_cost": 150,
+            "point_cost": 140,
             "save": 3,
             "unit_type": "cavalry",
             "weapons": [
@@ -148,6 +104,96 @@
                         }
                     ],
                     "to_hit": 5,
+                    "to_wound": 3
+                }
+            ]
+        },
+        {
+            "has_champion": true,
+            "health": 3,
+            "id": "chosen",
+            "model_count": 5,
+            "name": "Chaos Chosen",
+            "point_cost": 280,
+            "save": 3,
+            "unit_type": "infantry",
+            "weapons": [
+                {
+                    "attacks": 4,
+                    "damage": 2,
+                    "name": "PLACEHOLDER",
+                    "rend": 1,
+                    "to_hit": 3,
+                    "to_wound": 3,
+                    "special_rules": [
+                        {
+                            "id": "crit_mortal"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "has_champion": true,
+            "health": 2,
+            "id": "Chaos Warriors",
+            "model_count": 10,
+            "name": "Chaos Warriors",
+            "point_cost": 200,
+            "save": 3,
+            "unit_type": "infantry",
+            "weapons": [
+                {
+                    "attacks": 3,
+                    "damage": 1,
+                    "name": "PLACEHOLDER",
+                    "rend": 1,
+                    "to_hit": 3,
+                    "to_wound": 3,
+                    "special_rules": [
+                        {
+                            "id": "crit_auto_wound"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "has_champion": true,
+            "health": 5,
+            "id": "Ogroids Theridons",
+            "model_count": 3,
+            "name": "Ogroids Theridons",
+            "point_cost": 180,
+            "save": 4,
+            "unit_type": "infantry",
+            "weapons": [
+                {
+                    "attacks": 4,
+                    "damage": 3,
+                    "name": "PLACEHOLDER",
+                    "rend": 2,
+                    "to_hit": 4,
+                    "to_wound": 3
+                }
+            ]
+        },
+        {
+            "has_champion": true,
+            "health": 4,
+            "id": "Chaos knights",
+            "model_count": 5,
+            "name": "Chaos Knights",
+            "point_cost": 250,
+            "save": 3,
+            "unit_type": "cavalery",
+            "weapons": [
+                {
+                    "attacks": 4,
+                    "damage": 2,
+                    "name": "PLACEHOLDER",
+                    "rend": 0,
+                    "to_hit": 2,
                     "to_wound": 3
                 }
             ]

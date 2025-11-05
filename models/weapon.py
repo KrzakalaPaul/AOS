@@ -59,6 +59,7 @@ class Weapon:
 
         if any([crit_auto_wound, crit_mortal, crit_2_hits]):
             crit_threshold = 5 if any(rule["id"] == "crit_5+" for rule in self.special_rules) else 6
+            crit_threshold = 2 if any(rule["id"] == "crit_2+" for rule in self.special_rules) else crit_threshold
             hit_rolls, crit_rolls = roll_test_with_crit(to_hit, attacks, crit_threshold)
             results["hits"] = hit_rolls.sum() - crit_rolls.sum()
             if crit_auto_wound:

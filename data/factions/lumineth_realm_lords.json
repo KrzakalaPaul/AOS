@@ -1,13 +1,65 @@
 {"units":
     [
         {
+            "id": "sentinels",
+            "name": "Sentinels",
+            "point_cost": 160,
+            "model_count": 10,
+            "unit_type": "infantry",
+            "health": 1,
+            "save": 5,
+            "has_champion": true,
+            
+            "weapons": [
+                {
+                    "name": "Auralan Bow",
+                    "attacks": 2,
+                    "to_hit": 3,
+                    "to_wound": 4,
+                    "damage": 1,
+                    "rend": 1,
+                    "special_rules":
+                        [
+                            {"id": "crit_auto_wound"},
+                            {"id": "crit_5+"}
+                        ] 
+                }
+            ]
+        },
+        {
+            "id": "Wardens",
+            "name": "Wardens",
+            "point_cost": 140,
+            "model_count": 10,
+            "unit_type": "infantry",
+            "health": 1,
+            "save": 4,
+            "has_champion": true,
+            
+            "weapons": [
+                {
+                    "name": "Warden Pikes and Blades",
+                    "attacks": 2,
+                    "to_hit": 3,
+                    "to_wound": 4,
+                    "damage": 1,
+                    "rend": 1,
+                    "special_rules":
+                        [
+                            {"id": "crit_mortal"},
+                            {"id": "crit_5+"}
+                        ] 
+                }
+            ]
+        },
+        {
             "id": "alarith_stoneguard",
             "name": "Alarith Stoneguard",
-            "point_cost": 120,
+            "point_cost": 130,
             "model_count": 5,
             "unit_type": "infantry",
             "health": 2,
-            "save": 4,
+            "save": 3,
             "has_champion": true,
             
             "weapons": [
@@ -17,7 +69,7 @@
                     "to_hit": 3,
                     "to_wound": 3,
                     "damage": 2,
-                    "rend": 1,
+                    "rend": 2,
                     "special_rules":
                         [
                         ] 
@@ -26,12 +78,13 @@
         },
         {
             "id": "vanari_bladelords",
-            "name": "Vanari Bladelords",
-            "point_cost": 140,
+            "name": "Bladelords",
+            "point_cost": 150,
             "model_count": 5,
             "unit_type": "infantry",
             "health": 2,
             "save": 4,
+            "ward": 5,
             "has_champion": true,
             "weapons": [
                 {
@@ -44,15 +97,38 @@
                     "special_rules":
                         [
                             {"id": "add_rend", "condition": "infantry", "value": 1},
-                            {"id": "crit_mortal"}
+                            {"id": "crit_mortal"},
+                            {"id": "crit_5+"}
                         ] 
                 }
             ]
         },
         {
+            "id": "vanari_bladelords_perfect",
+            "name": "Bladelords (Perfect)",
+            "point_cost": 150,
+            "model_count": 5,
+            "unit_type": "infantry",
+            "health": 2,
+            "save": 4,
+            "ward": 5,
+            "has_champion": true,
+            "weapons": [
+                {
+                    "attacks": 1,
+                    "damage": 1,
+                    "rend": 0,
+                    "name": "Dawnrider Lances and Blades",
+                    "special_rules": [{"id": "crit_2+"}, {"id": "crit_mortal"}],
+                    "to_hit": 1,
+                    "to_wound": 7
+                }
+            ]
+        },
+        {
             "id": "Vanari_Dawnriders_charge",
-            "name": "Vanari Dawnriders (Charge)",
-            "point_cost": 230,
+            "name": "Dawnriders",
+            "point_cost": 220,
             "model_count": 5,
             "unit_type": "cavalry",
             "health": 3,
@@ -74,15 +150,50 @@
                 {
                     "attacks": 2,
                     "damage": 2,
+                    "rend": 1,
                     "name": "Dawnrider Lances and Blades",
-                    "special_rules": [
-                        {
-                            "id": "crit_5+"
-                        },
-                        {
-                            "id": "crit_mortal"
-                        }
-                    ],
+                    "special_rules": [{"id": "crit_5+"}, {"id": "crit_mortal"}],
+                    "to_hit": 3,
+                    "to_wound": 4
+                }
+            ],
+            "abilities": [
+                {
+                    "name": "Deathly Furrows",
+                    "id": "impact_mortals",
+                    "damage": 0,
+                    "roll": "3+"
+                }
+            ]
+        },
+        {
+            "id": "Vanari_Dawnriders_infantry",
+            "name": "Dawnriders (Infantry)",
+            "point_cost": 220,
+            "model_count": 5,
+            "unit_type": "cavalry",
+            "health": 3,
+            "save": 3,
+            "has_champion": true,
+            "weapons": [
+                {
+                    "name": "Stallions’ Dashing Hooves",
+                    "attacks": 2,
+                    "to_hit": 5,
+                    "to_wound": 3,
+                    "damage": 1,
+                    "rend": 0,
+                    "special_rules":
+                        [
+                            {"id": "companion"}
+                        ] 
+                },
+                {
+                    "attacks": 2,
+                    "damage": 2,
+                    "rend": 1,
+                    "name": "Dawnrider Lances and Blades",
+                    "special_rules": [{"id": "crit_5+"}, {"id": "crit_mortal"}],
                     "to_hit": 3,
                     "to_wound": 4
                 }
@@ -93,6 +204,158 @@
                     "id": "impact_mortals",
                     "damage": 1,
                     "roll": "3+"
+                }
+            ]
+        },
+        {
+            "id": "Eltharion",
+            "name": "Eltharion",
+            "point_cost": 210,
+            "model_count": 1,
+            "unit_type": "infantry",
+            "health": 6,
+            "save": 3,
+            "ward": 5,
+            "has_champion": false,
+            "weapons": [
+                {
+                    "name": "Searing Darts of Light",
+                    "attacks": 3,
+                    "to_hit": 2,
+                    "to_wound": 3,
+                    "damage": 2,
+                    "rend": 2 
+                },
+                {
+                    "name": "Fangsword of Elthario",
+                    "attacks": 4,
+                    "to_hit": 2,
+                    "to_wound": 3,
+                    "damage": 3,
+                    "rend": 3,
+                    "special_rules":
+                        [
+                            {"id": "crit_2_hits"}
+                        ] 
+                },
+                {
+                    "name": "Celennari Blade",
+                    "attacks": 2,
+                    "to_hit": 2,
+                    "to_wound": 3,
+                    "damage": 3,
+                    "rend": 1
+                }
+            ]
+        },
+        {
+            "id": "Avalenor",
+            "name": "Avalenor",
+            "point_cost": 410,
+            "model_count": 1,
+            "unit_type": "infantry",
+            "health": 16,
+            "save": 2,
+            "ward": 6,
+            "has_champion": false,
+            "weapons": [
+                {
+                    "name": "Geomantic Blast",
+                    "attacks": 1,
+                    "to_hit": 3,
+                    "to_wound": 2,
+                    "damage": 2,
+                    "rend": 4 
+                },
+                {
+                    "name": "Cloven Hooves",
+                    "attacks": 2,
+                    "to_hit": 4,
+                    "to_wound": 2,
+                    "damage": 2,
+                    "rend": 1
+                },
+                {
+                    "name": "Firestealer Hammers",
+                    "attacks": 6,
+                    "to_hit": 3,
+                    "to_wound": 2,
+                    "damage": 4,
+                    "rend": 2
+                }
+            ]
+        },
+        {
+            "id": "Avalenor",
+            "name": "Avalenor",
+            "point_cost": 410,
+            "model_count": 1,
+            "unit_type": "infantry",
+            "health": 16,
+            "save": 3,
+            "ward": 6,
+            "has_champion": false,
+            "weapons": [
+                {
+                    "name": "Geomantic Blast",
+                    "attacks": 1,
+                    "to_hit": 3,
+                    "to_wound": 2,
+                    "damage": 2,
+                    "rend": 4 
+                },
+                {
+                    "name": "Cloven Hooves",
+                    "attacks": 2,
+                    "to_hit": 4,
+                    "to_wound": 2,
+                    "damage": 2,
+                    "rend": 1
+                },
+                {
+                    "name": "Firestealer Hammers",
+                    "attacks": 6,
+                    "to_hit": 3,
+                    "to_wound": 2,
+                    "damage": 4,
+                    "rend": 2
+                }
+            ]
+        },
+        {
+            "id": "Spirit of the Mountain",
+            "name": "Spirit of the Mountain",
+            "point_cost": 280,
+            "model_count": 1,
+            "unit_type": "infantry",
+            "health": 14,
+            "save": 3,
+            "ward": 6,
+            "has_champion": false,
+            "weapons": [
+                {
+                    "name": "Geomantic Blast",
+                    "attacks": 1,
+                    "to_hit": 3,
+                    "to_wound": 2,
+                    "damage": 2,
+                    "rend": 4 
+                },
+                {
+                    "name": "Cloven Hooves",
+                    "attacks": 2,
+                    "to_hit": 4,
+                    "to_wound": 2,
+                    "damage": 2,
+                    "rend": 1
+                },
+                {
+                    "name": "Firestealer Hammers",
+                    "attacks": 4,
+                    "to_hit": 3,
+                    "to_wound": 2,
+                    "damage": 5,
+                    "rend": 2
                 }
             ]
         }

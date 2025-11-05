@@ -1,0 +1,74 @@
+{
+    "units": [
+        {
+            "has_champion": true,
+            "health": 3,
+            "id": "chosen",
+            "model_count": 5,
+            "name": "Chaos Chosen",
+            "point_cost": 280,
+            "save": 3,
+            "unit_type": "infantry",
+            "weapons": [
+                {
+                    "attacks": 4,
+                    "damage": 2,
+                    "name": "PLACEHOLDER",
+                    "rend": 1,
+                    "to_hit": 3,
+                    "to_wound": 3,
+                    "special_rules": [
+                        {
+                            "id": "crit_mortal"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "has_champion": true,
+            "health": 2,
+            "id": "Chaos Warriors",
+            "model_count": 10,
+            "name": "Chaos Warriors",
+            "point_cost": 200,
+            "save": 3,
+            "unit_type": "infantry",
+            "weapons": [
+                {
+                    "attacks": 3,
+                    "damage": 1,
+                    "name": "PLACEHOLDER",
+                    "rend": 1,
+                    "to_hit": 3,
+                    "to_wound": 3,
+                    "special_rules": [
+                        {
+                            "id": "crit_auto_wound"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "has_champion": true,
+            "health": 5,
+            "id": "Ogroids Theridons",
+            "model_count": 3,
+            "name": "Ogroids Theridons",
+            "point_cost": 180,
+            "save": 4,
+            "unit_type": "infantry",
+            "weapons": [
+                {
+                    "attacks": 4,
+                    "damage": 3,
+                    "name": "PLACEHOLDER",
+                    "rend": 2,
+                    "to_hit": 4,
+                    "to_wound": 3
+                }
+            ]
+        }
+    ]
+}

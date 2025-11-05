@@ -9,23 +9,22 @@ np.set_printoptions(precision=2, suppress=True)
 
 
 def main():
-
-    '''
+    """
     all_units = get_all_units()
-    knights = Profile(all_units["chaos_knights_charge"],is_reinforced=True)
-    dawnriders = Profile(all_units["Vanari_Dawnriders_charge"],is_reinforced=True)
-    metric = AlphaStrike(ennemy_unit=knights, scale_by_cost=False)
-    plot_cdf(dawnriders, metric, n_samples=10000)
-    '''
-
+    knights = Profile(all_units["Chaos knights"],is_reinforced=False)
+    eltharion = Profile(all_units["Eltharion"],is_reinforced=False)
+    metric = AlphaStrike(ennemy_unit=eltharion, scale_by_cost=False)
+    plot_cdf(knights, metric, n_samples=10000)
+    """
 
     ################ Load all units ################
-    
-    all_profiles = get_all_profiles(faction_name = 'slaves_to_darkness_heroes').values()
+
+    all_profiles = get_all_profiles(faction_name='lumineth_realm_lords').values()
+    print(f"Loaded {len(all_profiles)} units.")
     #metrics = [DamageOneActivation(save=s, scale_by_cost=False) for s in [2, 3, 4, 5]]
-    #metrics = [EffectiveHP(ennemy_rend=s, scale_by_cost=True) for s in [0,1,2,3]]
+    #metrics = [EffectiveHP(ennemy_rend=s, scale_by_cost=False) for s in [0,1,2,3]]
     #multimetric_plot(all_profiles, metrics, n_samples=10000)
-    scatter_plot_two_metrics(all_profiles, DamageOneActivation(save=4, scale_by_cost=True), EffectiveHP(ennemy_rend=1, scale_by_cost=True), n_samples=1000)
+    scatter_plot_two_metrics(all_profiles, DamageOneActivation(save=3, scale_by_cost=True), EffectiveHP(ennemy_rend=1, scale_by_cost=True), n_samples=5000)
 
     ################ Print a metric ################
     #metric = DPS(save=4, scale_by_cost=False)
