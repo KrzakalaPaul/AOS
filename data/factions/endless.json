@@ -1,0 +1,118 @@
+{
+    "units": [
+      {
+            "id": "Jaws",
+            "name": "Jaws",
+            "point_cost": 1,
+            "model_count": 10,
+            "health": 1,
+            "save": 6,
+            "ward": 6,
+            "weapons": [
+                {
+                    "name": "Jaws",
+                    "attacks": 1,
+                    "to_hit": 4,
+                    "to_wound": 2,
+                    "damage": 2,
+                    "rend": 1
+                }
+            ],
+            "abilities": [
+                {
+                    "name": "Deathly Furrows",
+                    "id": "impact_mortals",
+                    "damage": 1,
+                    "roll": "5+"
+                }
+            ]
+      },
+      {
+            "id": "Burning head",
+            "name": "head",
+            "point_cost": 1,
+            "model_count": 1,
+            "health": 6,
+            "save": 6,
+            "ward": 6,
+            "weapons": [
+                {
+                    "name": "Breath",
+                    "attacks": 4,
+                    "to_hit": 4,
+                    "to_wound": 3,
+                    "damage": 1,
+                    "rend": 2
+                },
+                {
+                    "name": "Maw",
+                    "attacks": 7,
+                    "to_hit": 4,
+                    "to_wound": 3,
+                    "damage": 1,
+                    "rend": 2
+                }
+            ]
+      },
+      {
+            "id": "Swords",
+            "name": "Swords",
+            "point_cost": 1,
+            "model_count": 1,
+            "health": 6,
+            "save": 6,
+            "ward": 6,
+            "weapons": [
+                {
+                    "name": "Blades",
+                    "attacks": 12,
+                    "to_hit": 4,
+                    "to_wound": 3,
+                    "damage": 1,
+                    "rend": 1,
+                    "special_rules": [{"id": "crit_mortal"}]
+                }
+            ]
+      },
+      {
+            "id": "Swords",
+            "name": "Swords",
+            "point_cost": 1,
+            "model_count": 1,
+            "health": 6,
+            "save": 6,
+            "ward": 6,
+            "weapons": [
+                {
+                    "name": "Blades",
+                    "attacks": 12,
+                    "to_hit": 4,
+                    "to_wound": 3,
+                    "damage": 1,
+                    "rend": 1,
+                    "special_rules": [{"id": "crit_mortal"}]
+                }
+            ]
+      },
+      {
+            "id": "Krondspine",
+            "name": "Krondspine",
+            "point_cost": 1,
+            "model_count": 1,
+            "health": 12,
+            "save": 6,
+            "ward": 6,
+            "weapons": [
+                {
+                    "name": "Claws",
+                    "attacks": 6,
+                    "to_hit": 4,
+                    "to_wound": 2,
+                    "damage": 3,
+                    "rend": 2,
+                    "special_rules": [{"id": "crit_mortal"}]
+                }
+            ]
+      }
+    ]
+}

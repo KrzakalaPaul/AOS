@@ -19,12 +19,12 @@ def main():
 
     ################ Load all units ################
 
-    all_profiles = get_all_profiles(faction_name='lumineth_realm_lords').values()
+    all_profiles = get_all_profiles(faction_name='endless').values()
     print(f"Loaded {len(all_profiles)} units.")
-    #metrics = [DamageOneActivation(save=s, scale_by_cost=False) for s in [2, 3, 4, 5]]
-    #metrics = [EffectiveHP(ennemy_rend=s, scale_by_cost=False) for s in [0,1,2,3]]
-    #multimetric_plot(all_profiles, metrics, n_samples=10000)
-    scatter_plot_two_metrics(all_profiles, DamageOneActivation(save=3, scale_by_cost=True), EffectiveHP(ennemy_rend=1, scale_by_cost=True), n_samples=5000)
+    metrics = [DamageOneActivation(save=s, scale_by_cost=False) for s in [2, 3, 4, 5]]
+    #metrics = [EffectiveHP(ennemy_rend=s, scale_by_cost=True) for s in [1,2,3,4]]
+    multimetric_plot(all_profiles, metrics, n_samples=10000)
+    #scatter_plot_two_metrics(all_profiles, DamageOneActivation(save=2, scale_by_cost=True), EffectiveHP(ennemy_rend=10, scale_by_cost=True), n_samples=5000)
 
     ################ Print a metric ################
     #metric = DPS(save=4, scale_by_cost=False)
