@@ -6,13 +6,56 @@
             "id": "varanguard",
             "model_count": 3,
             "name": "Varanguard Charge",
-            "point_cost": 340,
+            "point_cost": 320,
             "save": 3,
             "unit_type": "cavalry",
             "weapons": [
                 {
                     "attacks": 4,
                     "damage": 3,
+                    "name": "Daemonforged Blade",
+                    "rend": 2,
+                    "special_rules": [
+                        {
+                            "condition": "charged",
+                            "id": "add_damage",
+                            "value": 1
+                        },
+                        {
+                            "id": "crit_mortal"
+                        }
+                    ],
+                    "to_hit": 3,
+                    "to_wound": 3
+                },
+                {
+                    "attacks": 3,
+                    "damage": 1,
+                    "name": "Steed's Tearing Fangs",
+                    "rend": 1,
+                    "special_rules": [
+                        {
+                            "id": "companion"
+                        }
+                    ],
+                    "to_hit": 4,
+                    "to_wound": 3
+                }
+            ]
+        },
+        {
+            "has_champion": false,
+            "health": 5,
+            "id": "varanguard_nul",
+            "model_count": 3,
+            "name": "Varanguard (non-charge)",
+            "point_cost": 320,
+            "save": 3,
+            "unit_type": "cavalry",
+            "weapons": [
+                {
+                    "attacks": 4,
+                    "damage": 2,
                     "name": "Daemonforged Blade",
                     "rend": 2,
                     "special_rules": [
@@ -136,10 +179,10 @@
         {
             "has_champion": true,
             "health": 2,
-            "id": "Chaos Warriors",
+            "id": "chaos_warriors",
             "model_count": 10,
             "name": "Chaos Warriors",
-            "point_cost": 200,
+            "point_cost": 190,
             "save": 3,
             "unit_type": "infantry",
             "weapons": [
@@ -164,7 +207,7 @@
             "id": "Ogroids Theridons",
             "model_count": 3,
             "name": "Ogroids Theridons",
-            "point_cost": 180,
+            "point_cost": 170,
             "save": 4,
             "unit_type": "infantry",
             "weapons": [
@@ -172,8 +215,8 @@
                     "attacks": 4,
                     "damage": 3,
                     "name": "PLACEHOLDER",
-                    "rend": 2,
-                    "to_hit": 4,
+                    "rend": 1,
+                    "to_hit": 3,
                     "to_wound": 3
                 }
             ]
@@ -192,9 +235,166 @@
                     "attacks": 4,
                     "damage": 2,
                     "name": "PLACEHOLDER",
-                    "rend": 0,
-                    "to_hit": 2,
+                    "rend": 2,
+                    "to_hit": 3,
                     "to_wound": 3
+                },
+                {
+                    "attacks": 2,
+                    "damage": 1,
+                    "rend": 0,
+                    "name": "PLACEHOLDER",
+                    "special_rules": [
+                        {
+                            "id": "companion"
+                        }
+                    ],
+                    "to_hit": 5,
+                    "to_wound": 3
+                }
+            ]
+        },
+        {
+            "has_champion": true,
+            "health": 3,
+            "id": "fellriders",
+            "model_count": 5,
+            "name": "Darkoath Fellriders",
+            "point_cost": 150,
+            "save": 5,
+            "unit_type": "cavalery",
+            "weapons": [
+                {
+                    "attacks": 3,
+                    "damage": 2,
+                    "name": "PLACEHOLDER",
+                    "rend": 1,
+                    "to_hit": 3,
+                    "to_wound": 3
+                },
+                {
+                    "attacks": 2,
+                    "damage": 1,
+                    "rend": 0,
+                    "name": "PLACEHOLDER",
+                    "special_rules": [
+                        {
+                            "id": "companion"
+                        }
+                    ],
+                    "to_hit": 5,
+                    "to_wound": 3
+                }
+            ]
+        },
+        {
+            "has_champion": false,
+            "health": 10,
+            "id": "Karkadrak",
+            "model_count": 1,
+            "name": "Lord on Karkadrak",
+            "point_cost": 190,
+            "save": 3,
+            "unit_type": "cavalery",
+            "weapons": [
+                {
+                    "attacks": 7,
+                    "damage": 3,
+                    "name": "PLACEHOLDER",
+                    "rend": 1,
+                    "to_hit": 3,
+                    "to_wound": 3,
+                    "special_rules": [
+                        {
+                            "id": "crit_mortal"
+                        }
+                    ]
+                },
+                {
+                    "attacks": 4,
+                    "damage": 2,
+                    "rend": 1,
+                    "name": "PLACEHOLDER",
+                    "special_rules": [
+                        {
+                            "id": "companion"
+                        }
+                    ],
+                    "to_hit": 4,
+                    "to_wound": 3
+                }
+            ],
+            "abilities": [
+                {
+                    "name": "Impact (Mortals)",
+                    "id": "impact_mortals",
+                    "damage": 2,
+                    "roll": "3+"
+                }
+            ]
+        },
+        {
+            "has_champion": false,
+            "health": 38,
+            "id": "TheridonsPack",
+            "model_count": 1,
+            "name": "TheridonsPack",
+            "point_cost": 460,
+            "save": 4,
+            "ward": 5,
+            "weapons": [
+                {
+                    "attacks": 33,
+                    "damage": 3,
+                    "name": "PLACEHOLDER",
+                    "rend": 1,
+                    "to_hit": 3,
+                    "to_wound": 2
+                }
+            ]
+        },
+        {
+            "has_champion": false,
+            "health": 30,
+            "id": "TheridonsPack_noleader",
+            "model_count": 1,
+            "name": "TheridonsPack_noleader",
+            "point_cost": 320,
+            "save": 4,
+            "ward": 6,
+            "weapons": [
+                {
+                    "attacks": 25,
+                    "damage": 3,
+                    "name": "PLACEHOLDER",
+                    "rend": 1,
+                    "to_hit": 4,
+                    "to_wound": 2
+                }
+            ]
+        },
+        {
+            "has_champion": false,
+            "health": 10,
+            "id": "2DemonPrince",
+            "model_count": 2,
+            "name": "2DemonPrince",
+            "point_cost": 500,
+            "save": 3,
+            "ward": 5,
+            "weapons": [
+                {
+                    "attacks": 8,
+                    "damage": 3,
+                    "name": "Hellforged Weapons",
+                    "rend": 1,
+                    "to_hit": 3,
+                    "to_wound": 3,
+                    "special_rules": [
+                        {
+                            "id": "crit_mortal"
+                        }
+                    ]
                 }
             ]
         }

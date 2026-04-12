@@ -1,0 +1,145 @@
+{
+    "units": [
+        {
+            "has_champion": true,
+            "health": 5,
+            "id": "Theridons",
+            "model_count": 6,
+            "name": "Theridons",
+            "point_cost": 320,
+            "save": 4,
+            "ward": 5,
+            "weapons": [
+                {
+                    "attacks": 4,
+                    "damage": 3,
+                    "name": "PLACEHOLDER",
+                    "rend": 1,
+                    "to_hit": 3,
+                    "to_wound": 2
+                }
+            ]
+        },
+        {
+            "has_champion": false,
+            "health": 14,
+            "id": "Abraxia",
+            "model_count": 1,
+            "name": "Abraxia",
+            "point_cost": 250,
+            "save": 3,
+            "ward": 5,
+            "weapons": [
+                {
+                    "attacks": 6,
+                    "damage": 2,
+                    "name": "Claws and Fangs",
+                    "rend": 1,
+                    "to_hit": 4,
+                    "to_wound": 3
+                },
+                {
+                    "attacks": 5,
+                    "damage": 3,
+                    "name": "Gorbolga",
+                    "rend": 2,
+                    "to_hit": 3,
+                    "to_wound": 3
+                }
+            ]
+        },
+        {
+            "has_champion": false,
+            "health": 14,
+            "id": "Abraxia Charge",
+            "model_count": 1,
+            "name": "Abraxia Charge",
+            "point_cost": 250,
+            "save": 3,
+            "ward": 5,
+            "weapons": [
+                {
+                    "attacks": 6,
+                    "damage": 2,
+                    "name": "Claws and Fangs",
+                    "rend": 1,
+                    "to_hit": 4,
+                    "to_wound": 3
+                },
+                {
+                    "attacks": 5,
+                    "damage": 4,
+                    "name": "Gorbolga",
+                    "rend": 2,
+                    "to_hit": 3,
+                    "to_wound": 3
+                }
+            ]
+        },
+        {
+            "has_champion": false,
+            "health": 14,
+            "id": "Belakor",
+            "model_count": 1,
+            "name": "Belakor",
+            "point_cost": 410,
+            "save": 6, 
+            "ward": 3,
+            "weapons": [
+                {
+                    "attacks": 2,
+                    "damage": 3,
+                    "name": "Claws and Tail",
+                    "rend": 2,
+                    "to_hit": 2,
+                    "to_wound": 2
+                },
+                {
+                    "attacks": 8,
+                    "damage": 2,
+                    "name": "Blade",
+                    "rend": 2,
+                    "to_hit": 3,
+                    "to_wound": 3
+                }
+            ]
+        },
+        {
+            "has_champion": false,
+            "health": 25,
+            "id": "Archaon",
+            "model_count": 1,
+            "name": "Archaon",
+            "point_cost": 810,
+            "save": 3, 
+            "ward": 5,
+            "weapons": [
+                {
+                    "attacks": 3,
+                    "damage": 5,
+                    "name": "Claws and Tail",
+                    "rend": 1,
+                    "to_hit": 3,
+                    "to_wound": 2
+                },
+                {
+                    "attacks": 6,
+                    "damage": 3,
+                    "name": "Blade",
+                    "rend": 2,
+                    "to_hit": 4,
+                    "to_wound": 2
+                },
+                {
+                    "attacks": 4,
+                    "damage": 3,
+                    "name": "The Slayer of Kings",
+                    "rend": 2,
+                    "to_hit": 2,
+                    "to_wound": 3
+                }
+            ]
+        }
+
+    ]
+}

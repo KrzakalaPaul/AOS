@@ -12,6 +12,7 @@ def load_faction(faction_name: str) -> dict:
 def get_all_units(faction_name=None) -> dict:
     """Load all available units from all faction files or a specific faction if faction_name is provided"""
     units_by_id = {}
+    id_list = []
     faction_dir = Path(__file__).parent / "../data/factions"
 
     if faction_name:
@@ -24,6 +25,9 @@ def get_all_units(faction_name=None) -> dict:
             faction_data = json.load(f)
             for unit_data in faction_data.get("units", []):
                 units_by_id[unit_data["id"]] = unit_data
+                if unit_data["id"] in id_list:
+                    print(f"Duplicate unit id found: {unit_data['id']}")
+                id_list.append(unit_data["id"])
 
     return units_by_id
 

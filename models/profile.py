@@ -64,4 +64,5 @@ class Profile:
         self.current_models = max(0, self.total_models - models_slain)
         if self.current_models <= 0:
             self.is_destroyed = True
-        return previous_models - self.current_models
+        killed_models = previous_models - self.current_models
+        return damage, killed_models

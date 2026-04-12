@@ -1,0 +1,146 @@
+{
+    "units": [
+        {
+            "has_champion": false,
+            "health": 14,
+            "id": "Terrorgheist",
+            "model_count": 1,
+            "name": "Terrorgheist",
+            "point_cost": 230,
+            "save": 4,
+            "ward": 6,
+            "weapons": [
+                {
+                    "attacks": 1,
+                    "damage": 3,
+                    "name": "PLACEHOLDER",
+                    "rend": 2,
+                    "to_hit": 4,
+                    "to_wound": 3
+                },
+                {
+                    "attacks": 4,
+                    "damage": 5,
+                    "name": "Fanged Maw",
+                    "rend": 2,
+                    "to_hit": 3,
+                    "to_wound": 2,
+                    "special_rules": [
+                        {
+                            "id": "crit_mortal"
+                        }
+                    ]
+                },
+                {
+                    "attacks": 7,
+                    "damage": 2,
+                    "name": "Skeletal Talons",
+                    "rend": 1,
+                    "to_hit": 3,
+                    "to_wound": 2,
+                    "special_rules": [
+                        {
+                            "id": "crit_mortal"
+                        }
+                    ]
+                }
+
+            ]
+        },
+        {
+            "has_champion": false,
+            "health": 14,
+            "id": "2 Terrorgheist",
+            "model_count": 2,
+            "name": "2 Terrorgheist",
+            "point_cost": 460,
+            "save": 4,
+            "ward": 6,
+            "weapons": [
+                {
+                    "attacks": 1,
+                    "damage": 3,
+                    "name": "PLACEHOLDER",
+                    "rend": 2,
+                    "to_hit": 4,
+                    "to_wound": 3
+                },
+                {
+                    "attacks": 4,
+                    "damage": 5,
+                    "name": "Fanged Maw",
+                    "rend": 2,
+                    "to_hit": 3,
+                    "to_wound": 2,
+                    "special_rules": [
+                        {
+                            "id": "crit_mortal"
+                        }
+                    ]
+                },
+                {
+                    "attacks": 7,
+                    "damage": 2,
+                    "name": "Skeletal Talons",
+                    "rend": 1,
+                    "to_hit": 3,
+                    "to_wound": 2,
+                    "special_rules": [
+                        {
+                            "id": "crit_mortal"
+                        }   
+                    ]
+                }
+
+            ]
+        },
+        {
+            "has_champion": false,
+            "health": 14,
+            "id": "3 Terrorgheist",
+            "model_count": 3,
+            "name": "3 Terrorgheist",
+            "point_cost": 690,
+            "save": 4,
+            "ward": 6,
+            "weapons": [
+                {
+                    "attacks": 1,
+                    "damage": 3,
+                    "name": "PLACEHOLDER",
+                    "rend": 2,
+                    "to_hit": 4,
+                    "to_wound": 3
+                },
+                {
+                    "attacks": 4,
+                    "damage": 5,
+                    "name": "Fanged Maw",
+                    "rend": 2,
+                    "to_hit": 3,
+                    "to_wound": 2,
+                    "special_rules": [
+                        {
+                            "id": "crit_mortal"
+                        }   
+                    ]
+                },
+                {
+                    "attacks": 7,
+                    "damage": 2,
+                    "name": "Skeletal Talons",
+                    "rend": 1,
+                    "to_hit": 3,
+                    "to_wound": 2,
+                    "special_rules": [
+                        {
+                            "id": "crit_mortal"
+                        }   
+                    ]
+                }
+
+            ]
+        }
+    ]
+}
+

@@ -4,7 +4,6 @@ from .utils import plot_multi_bars
 import matplotlib.pyplot as plt
 import numpy as np
 
-
 class UnitMetric:
     """
     Generic class for unit metrics.
@@ -33,9 +32,19 @@ def average_metric(unit: Profile, metric: UnitMetric, n_samples: int = 1000):
     unit.reset()
     metric_value = 0
     samples = metric.get_samples(unit, n_samples)
+    values = []
     for s in samples:
+        values.append(s)
         metric_value += s
     return metric_value / n_samples
+
+def median_metric(unit: Profile, metric: UnitMetric, n_samples: int = 1000):
+    """
+    Compute the median value of a metric for a unit over a number of samples.
+    """
+    unit.reset()
+    samples = metric.get_samples(unit, n_samples)
+    return np.median(np.array(samples))
 
 
 def plot_cdf(unit: Profile, metric: UnitMetric, n_samples: int = 1000):
@@ -183,10 +192,11 @@ class AlphaStrike(UnitMetric):
         ennemy_unit = self.ennemy_unit
         ennemy_unit.reset()
         dmg = unit.attack_with_all_weapons(combat_context=combat_context, enemy_save=ennemy_unit.save)
+        damage, killed_models = ennemy_unit.receive_damage(dmg)
         if self.return_n_slain_models:
-            metric = ennemy_unit.receive_damage(dmg)
+            metric = killed_models
         else:
-            metric = dmg / unit.cost if self.scale_by_cost else dmg
+            metric = damage / unit.cost if self.scale_by_cost else damage
         return metric
 
 
@@ -208,10 +218,11 @@ class BetaStrike(UnitMetric):
         dmg_taken = ennemy_unit.attack_with_all_weapons(combat_context=combat_context, enemy_save=unit.save)
         unit.receive_damage(dmg_taken)
         dmg = unit.attack_with_all_weapons(combat_context=combat_context, enemy_save=ennemy_unit.save)
+        damage, killed_models = ennemy_unit.receive_damage(dmg)
         if self.return_n_slain_models:
-            metric = ennemy_unit.receive_damage(dmg)
+            metric = killed_models
         else:
-            metric = dmg / unit.cost if self.scale_by_cost else dmg
+            metric = damage / unit.cost if self.scale_by_cost else damage
         return metric
 
 class EffectiveHP(UnitMetric):

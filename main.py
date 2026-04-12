@@ -9,29 +9,46 @@ np.set_printoptions(precision=2, suppress=True)
 
 
 def main():
-    """
-    all_units = get_all_units()
-    knights = Profile(all_units["Chaos knights"],is_reinforced=False)
-    eltharion = Profile(all_units["Eltharion"],is_reinforced=False)
-    metric = AlphaStrike(ennemy_unit=eltharion, scale_by_cost=False)
-    plot_cdf(knights, metric, n_samples=10000)
-    """
-
+    
+    # all_units = get_all_units(faction_name='slaves_to_darkness_new')
+    # knights = Profile(all_units["chaos_knights_charge"],is_reinforced=False)
+    # fellriders = Profile(all_units["fellriders (SPIKE)"],is_reinforced=True)
+    # vaches1 = Profile(all_units["Ogroids Theridons"],is_reinforced=True)
+    # vaches2 = Profile(all_units["Ogroids Theridons (SPIKE)"],is_reinforced=True)
+    
+    # #metric = AlphaStrike(ennemy_unit=varanguard, scale_by_cost=False)
+    # #print(average_metric(knights, metric, n_samples=10000))
+    # #plot_cdf(knights, metric, n_samples=10000)
+    # metrics = [DamageOneActivation(save=s, scale_by_cost=False) for s in [2, 3, 4, 5]]
+    # multimetric_plot([knights, vaches1, vaches2, fellriders], metrics, n_samples=1000)
+    # metrics = [EffectiveHP(ennemy_rend=s, scale_by_cost=False) for s in [1,2,3,4]]
+    # multimetric_plot([knights, vaches1, vaches2, fellriders], metrics, n_samples=1000)
+    
     ################ Load all units ################
 
-    all_profiles = get_all_profiles(faction_name='endless').values()
-    print(f"Loaded {len(all_profiles)} units.")
-    metrics = [DamageOneActivation(save=s, scale_by_cost=False) for s in [2, 3, 4, 5]]
-    #metrics = [EffectiveHP(ennemy_rend=s, scale_by_cost=True) for s in [1,2,3,4]]
-    multimetric_plot(all_profiles, metrics, n_samples=10000)
-    #scatter_plot_two_metrics(all_profiles, DamageOneActivation(save=2, scale_by_cost=True), EffectiveHP(ennemy_rend=10, scale_by_cost=True), n_samples=5000)
+    # all_profiles = get_all_profiles(faction_name='slaves_to_darkness_new', is_reinforced=True).values()
+    # print(f"Loaded {len(all_profiles)} units.")
+    # units = all_profiles
+    # metrics = [DamageOneActivation(save=s, scale_by_cost=True) for s in [2, 3, 4, 5]]
+    # #metrics = [EffectiveHP(ennemy_rend=s, scale_by_cost=True) for s in [1,2,3,4]]
+    # multimetric_plot(units, metrics, n_samples=10000)
+    # scatter_plot_two_metrics(units, DamageOneActivation(save=3, scale_by_cost=True), EffectiveHP(ennemy_rend=1, scale_by_cost=True), n_samples=5000)
 
     ################ Print a metric ################
-    #metric = DPS(save=4, scale_by_cost=False)
-    #metric = AlphaStrike(ennemy_unit=knights, scale_by_cost=False)
-    #print(average_metric(units[1], metric, n_samples=10000))
-    #plot_cdf(dawnriders, metric, n_samples=10000)
-
+    std_units = get_all_units(faction_name='std_foudoudav')
+    archaon = Profile(std_units["Archaon"])
+    fec_units = get_all_units(faction_name='fec_boost')
+    two_terrorgheist = Profile(fec_units["2 Terrorgheist"])
+    three_terrorgheist = Profile(fec_units["3 Terrorgheist"])
+    metric = AlphaStrike(ennemy_unit=archaon, scale_by_cost=False, return_n_slain_models=False)
+    print('Damage:')
+    print(median_metric(two_terrorgheist, metric, n_samples=10000))
+    plot_cdf(two_terrorgheist, metric, n_samples=10000)
+    print('Proba one shot:')
+    archaon = Profile(std_units["Archaon"])
+    metric = AlphaStrike(ennemy_unit=archaon, scale_by_cost=False, return_n_slain_models=True)
+    print(average_metric(two_terrorgheist, metric, n_samples=10000))
+    plot_cdf(two_terrorgheist, metric, n_samples=10000)
     """
     ################ Plot different metrics ################
      

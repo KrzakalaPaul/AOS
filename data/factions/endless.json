@@ -75,26 +75,6 @@
             ]
       },
       {
-            "id": "Swords",
-            "name": "Swords",
-            "point_cost": 1,
-            "model_count": 1,
-            "health": 6,
-            "save": 6,
-            "ward": 6,
-            "weapons": [
-                {
-                    "name": "Blades",
-                    "attacks": 12,
-                    "to_hit": 4,
-                    "to_wound": 3,
-                    "damage": 1,
-                    "rend": 1,
-                    "special_rules": [{"id": "crit_mortal"}]
-                }
-            ]
-      },
-      {
             "id": "Krondspine",
             "name": "Krondspine",
             "point_cost": 1,
